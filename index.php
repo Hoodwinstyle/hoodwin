@@ -22,3 +22,36 @@
 </div>
 </body>
 </html>
+
+
+<?php
+if(isset($_POST['submit'])){
+    $number1 = $_POST['number1'];
+    $number2 = $_POST['number2'];
+    $operation = $_POST['operation'];
+    if(!$operation || ($number1 == '') || ($number2 == '')){
+        $result = "Не все аргументы введены";
+    }
+    else {
+        switch ($operation) {
+            case 'plus':
+                $result = $number1 + $number2;
+                break;
+            case 'minus':
+                $result = $number1 - $number2;
+                break;
+            case 'multiply':
+                $result = $number1 * $number2;
+                break;
+            case 'divide':
+                if ($number1 * $number2 == 0) {
+                    $result = "На ноль делить нельзя!";
+                } else {
+                    $result = $number1 / $number2;
+                    break;
+                }
+        }
+    }
+    echo "<div class='answer-text'>Ответ: $result</div>";
+
+}
